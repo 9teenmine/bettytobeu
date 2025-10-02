@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Confession Story</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    section {
+      display: none;
+      min-height: 100vh;
+      padding: 30px 20px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    section.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    }
+    h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    }
+    p {
+      font-size: 20px;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+      max-width: 750px;
+    }
+
+    .btn {
+      background: #ff4d6d;
+      border: none;
+      padding: 14px 28px;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      color: white;
+      box-shadow: 0 0 15px rgba(255,77,109,0.7);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin: 10px;
+    }
+
+    #main-btn {
+      background: rgb(136, 255, 136);
+      color: black;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(255,77,109,1);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    iframe {
+      border-radius: 20px;
+      margin-top: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      width: 560px;
+      height: 315px;
+    }
+
+    .captions {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .captions img {
+      width: 180px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 15px;
+      border: 3px solid #fff;
+      box-shadow: 0 0 15px rgba(255,255,255,0.7);
+    }
+
+    /* Floating hearts animation */
+    .heart {
+      position: fixed;
+      bottom: -50px;
+      color: rgba(255,255,255,0.8);
+      font-size: 24px;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background music (final page only) -->
+  <audio id="intro-music" loop>
+    <source src="music/Steal The Show - Lauv.mp3" type="audio/mp3">
+  </audio>
+
+  <audio id="confession-music" loop>
+    <source src="music/စိတ်ကူးနွယ် - Conri Zann & Wizzy.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Page 1: Intro -->
+  <section id="page1" class="active">
+    <h1>💘 Welcome to... The Unexpected Match Show 💘</h1>
+    <p>Use your Headphone 🎧 to get better experience.</p>
+    <p></p>
+    <button class="btn" onclick="nextPage(2); intro.play();">Start ✨</button>
+  </section>
+
+  <!-- Page 2: How We Met -->
+  <section id="page2">
+    <h2>👀 How We Met</h2>
+    <p>One day, Facebook suggested someone I might know...</p>
+    <p>Something about you caught my attention. I had to know more.</p>
+    <div class="btn-row">
+      <!-- <button class="btn" onclick="prevPage(1)">Back</button> -->
+      <button class="btn" onclick="nextPage(3); intro.pause();">Ok? Next</button>
+    </div>
+  </section>
+
+  <!-- Page 3: Same Vibe + YouTube -->
+  <section id="page3">
+    <h2>🧩 Same Vibe</h2>
+    <p>INTJ + INTP = the perfect team?</p>
+    <iframe id="video1"
+      src="https://www.youtube.com/embed/CTFFqjNK0cY?enablejsapi=1&autoplay=1&loop=1&playlist=CTFFqjNK0cY"
+      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="btn-row">
+      <button class="btn" onclick="prevPage(2)">Back</button>
+      <button class="btn" onclick="nextPage(4)">Maybe</button>
+    </div>
+  </section>
+
+  <!-- Page 4: YouTube Connection -->
+  <section id="page4">
+    <h2>🎶 YouTube Connection</h2>
+    <p>I watched your videos and noticed... Your way of talking feels just like mine. And you used one of my favorite background songs.</p>
+    <iframe id="video2"
+      src="https://www.youtube.com/embed/ympbnYGFY1s?enablejsapi=1&autoplay=1&loop=1&playlist=ympbnYGFY1s"
+      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="btn-row">
+      <button class="btn" onclick="prevPage(3)">Back</button>
+      <button class="btn" onclick="nextPage(5); intro.play();">Next</button>
+    </div>
+  </section>
+
+    <!-- Page 5: Same Caption Evidence -->
+    <section id="page5">
+      <h2>📸 Same Birthday Captions</h2>
+      <p>Even our captions matched — we think alike without even knowing it!</p>
+      <div class="captions">
+        <img src="her bd caption.jpg" alt="Her Birthday Caption">
+        <img src="my bd caption.jpg" alt="My Birthday Caption">
+      </div>
+      <div class="btn-row">
+        <button class="btn" onclick="prevPage(4); intro.pause();">Back</button>
+        <button class="btn" onclick="nextPage(6); intro.pause();">Next</button>
+      </div>
+    </section>
+
+  <!-- Page 6: 7 Months Later -->
+  <section id="page6">
+    <h2>⏳ 7 Months Later</h2>
+    <p>It’s been almost 7 months since my first crush on you. I hesitated, waiting for the perfect time... But now I know, I might regret it if I don’t tell you.</p>
+    <iframe id="video3"
+      src="https://www.youtube.com/embed/zYTpAS_Uojs?enablejsapi=1&autoplay=1&loop=1&playlist=zYTpAS_Uojs"
+      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="btn-row">
+      <button class="btn" onclick="prevPage(5)">Back</button>
+      <button class="btn" onclick="nextPage(7)">Open my heart</button>
+    </div>
+  </section>
+
+  <!-- Page 7: Confession -->
+  <section id="page7">
+    <h2>💌 My Confession</h2>
+    <p>So here I am... I think we should date. 💖</p>
+    <div class="btn-row">
+      <button class="btn" id="main-btn" onclick="celebrate('yes')">Let's try! 🌍❤️</button>
+      <button class="btn" onclick="celebrate('no')">Maybe later.. ⏳</button>
+      <button class="btn" onclick="prevPage(6)">I’m not ready yet..</button>
+    </div>
+  </section>
+
+  <script>
+    let currentPage = 1;
+    const totalPages = 7;
+    const videos = {
+      3: document.getElementById('video1'),
+      4: document.getElementById('video2'),
+      6: document.getElementById('video3')
+    };
+    const intro = document.getElementById('intro-music');
+    const music = document.getElementById('confession-music');
+
+    function nextPage(num) { changePage(num); }
+    function prevPage(num) { changePage(num); }
+
+    function changePage(num) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById('page' + num).classList.add('active');
+      currentPage = num;
+
+      // Pause all videos
+      for (let key in videos) {
+        videos[key].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+      }
+
+      // Play video if page has one
+      if (videos[num]) {
+        videos[num].contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+      }
+
+      // Handle music
+      if (num === 7) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+
+    // Floating hearts generator
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 800);
+
+    function celebrate(choice) {
+      if (choice === 'yes') {
+        alert('Yay! ❤️ Let’s celebrate! 🎉');
+      } else {
+        alert('That’s okay 💫 I just wanted you to know how I feel.');
+      }
+    }
+  </script>
+</body>
+</html>
