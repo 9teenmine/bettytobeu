@@ -120,11 +120,11 @@
 
   <!-- Background music (final page only) -->
   <audio id="intro-music" loop>
-    <source src="music/Steal The Show - Lauv.mp3" type="audio/mp3">
+    <source src="Steal The Show - Lauv.mp3" type="audio/mp3">
   </audio>
 
   <audio id="confession-music" loop>
-    <source src="music/စိတ်ကူးနွယ် - Conri Zann & Wizzy.mp3" type="audio/mp3">
+    <source src="စိတ်ကူးနွယ် - Conri Zann & Wizzy.mp3" type="audio/mp3">
   </audio>
 
   <!-- Page 1: Intro -->
@@ -268,3 +268,4 @@
   </script>
 </body>
 </html>
+
